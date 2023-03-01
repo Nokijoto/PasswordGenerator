@@ -26,5 +26,77 @@ namespace PasswordGenerator
         {
             this.InitializeComponent();
         }
+
+        private void generateButton_Click(object sender, RoutedEventArgs e)
+        {
+            passwordTextBox.Text = "";
+            try
+            {
+
+                double Length = lenghtSlider.Value;
+                List<char> password = new System.Collections.Generic.List<char>();
+                for (int i = 0; i <= Length; i++)
+                {
+                    password.Add(RandomChar());
+                }
+                foreach (char c in password)
+                {
+                    passwordTextBox.Text += c;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private char RandomChar()
+        {
+            try
+            {
+                String final = PrepareString();
+                Random random = new Random();
+                return (char)final[random.Next(0, final.Length - 1)];
+            }
+            catch (Exception)
+            {
+                return ' ';
+            }
+
+        }
+        public String PrepareString()
+        {
+            String AZ = "ABCDEFGHIJKLMNOPRSTUVWXYZ";
+            String az = "abcdefghijklmnoprstuvwxyz";
+            String numbers = "0123456789";
+            String special = "!@#$%^&*";
+            String final = "";
+
+            if (!ValiadateOptions())
+            {
+                passwordTextBox.Text = "Zaznacz jedną z opcji aby wygenerować";
+                return "";
+            }
+
+            _ = (bool)bigLettersChB.IsChecked ? final += AZ : final += "";
+            _ = (bool)smallLettersChB.IsChecked ? final += az : final += "";
+            _ = (bool)numbersChB.IsChecked ? final += numbers : final += "";
+            _ = (bool)specialChB.IsChecked ? final += special : final += "";
+            return ShuffleString(final);
+        }
+        private bool ValiadateOptions()
+        {
+            if (!(bool)bigLettersChB.IsChecked && !(bool)smallLettersChB.IsChecked && !(bool)numbersChB.IsChecked && !(bool)specialChB.IsChecked)
+            {
+                return false;
+            }
+            return true;
+        }
+        private String ShuffleString(String oldone)
+        {
+            Random r = new Random();
+            return new string(oldone.ToCharArray().OrderBy(s => (r.Next(2) % 2) == 0).ToArray());
+        }
     }
+
 }

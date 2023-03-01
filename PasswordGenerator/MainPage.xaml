@@ -9,6 +9,15 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Button x:Name="generateButton" Content="Generuj" Margin="86,574,0,0" VerticalAlignment="Top" Click="generateButton_Click" Height="45" Width="529"/>
+        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="86,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="529" PlaceholderText="Hasło" Header="Wygenerowane Hasło" IsReadOnly="True" Height="185"/>
+        <Slider x:Name="lenghtSlider" HorizontalAlignment="Left" Margin="86,265,0,0" VerticalAlignment="Top" Width="529" Minimum="5" Maximum="128" Header="Ilość Znaków" Value="8"/>
+        <CheckBox x:Name="bigLettersChB" Content="A-Z" Margin="86,354,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="numbersChB" Content="0-9" Margin="86,448,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="specialChB" Content="!@#$%^&amp;*" Margin="86,499,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="smallLettersChB" Content="a-z" Margin="86,400,0,0" VerticalAlignment="Top" IsChecked="True"/>
+
+
 
     </Grid>
 </Page>

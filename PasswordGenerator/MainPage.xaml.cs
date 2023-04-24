@@ -29,7 +29,7 @@ namespace PasswordGenerator
 
         private void generateButton_Click(object sender, RoutedEventArgs e)
         {
-            passwordTextBox.Text = "";
+            passwordTextBox.Text = String.Empty;
             try
             {
 
@@ -70,18 +70,18 @@ namespace PasswordGenerator
             String az = "abcdefghijklmnoprstuvwxyz";
             String numbers = "0123456789";
             String special = "!@#$%^&*";
-            String final = "";
+            String final = String.Empty;
 
             if (!ValiadateOptions())
             {
                 passwordTextBox.Text = "Zaznacz jedną z opcji aby wygenerować";
-                return "";
+                return String.Empty;
             }
 
-            _ = (bool)bigLettersChB.IsChecked ? final += AZ : final += "";
-            _ = (bool)smallLettersChB.IsChecked ? final += az : final += "";
-            _ = (bool)numbersChB.IsChecked ? final += numbers : final += "";
-            _ = (bool)specialChB.IsChecked ? final += special : final += "";
+            _ = (bool)bigLettersChB.IsChecked ? final += AZ : final += String.Empty;
+            _ = (bool)smallLettersChB.IsChecked ? final += az : final += String.Empty;
+            _ = (bool)numbersChB.IsChecked ? final += numbers : final += String.Empty;
+            _ = (bool)specialChB.IsChecked ? final += special : final += String.Empty;
             return ShuffleString(final);
         }
         private bool ValiadateOptions()
